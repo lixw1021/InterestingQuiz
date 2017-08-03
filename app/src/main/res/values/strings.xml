@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Interesting Quiz</string>
+    <string name="this_is_a_answer">this is a answer</string>
+    <string name="hint">Hint</string>
+</resources>
