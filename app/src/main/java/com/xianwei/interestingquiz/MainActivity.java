@@ -32,13 +32,10 @@ public class MainActivity extends AppCompatActivity {
     View questionThreeView = null;
     View questionFourView = null;
 
-    @BindView(R.id.radio_button_a) RadioButton radioButtonA;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
         setupUI();
     }
 
