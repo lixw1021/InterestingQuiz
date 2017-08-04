@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -127,28 +128,17 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
     private View createOneAnswerView (final OneAnswerQuestion question) {
         View newView = LayoutInflater.from(this).inflate(R.layout.activity_one_answer, null);
 
-        TextView questionView = (TextView) newView.findViewById(R.id.one_answer_question_view);
-        questionView.setText(question.getQuestion());
-
-        ImageView imageView = (ImageView) newView.findViewById(R.id.one_answer_image_view);
-        imageView.setScaleType(ImageView.ScaleType.CENTER);
-        imageView.setImageBitmap(question.getImage());
-
-        RadioButton buttonA = (RadioButton) newView.findViewById(R.id.radio_button_a);
-        buttonA.setText(question.getAnswerA());
-
-        RadioButton buttonB = (RadioButton) newView.findViewById(R.id.radio_button_b);
-        buttonB.setText(question.getAnswerB());
-
-        RadioButton buttonC = (RadioButton) newView.findViewById(R.id.radio_button_c);
-        buttonC.setText(question.getAnswerC());
-
-        Button hintButton = (Button) newView.findViewById(R.id.one_answer_hint_button);
-        hintButton.setOnClickListener(new View.OnClickListener() {
+        OneAnswerViewHolder holder = new OneAnswerViewHolder(newView);
+        holder.questionTextView.setText(question.getQuestion());
+        holder.imageView.setImageBitmap(question.getImage());
+        holder.imageView.setScaleType(ImageView.ScaleType.CENTER);
+        holder.radioButtonA.setText(question.getAnswerA());
+        holder.radioButtonB.setText(question.getAnswerB());
+        holder.radioButtonC.setText(question.getAnswerC());
+        holder.hintButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 createToast(question.getHint());
@@ -158,36 +148,52 @@ public class MainActivity extends AppCompatActivity {
         return newView;
     }
 
+    static class OneAnswerViewHolder{
+
+        @BindView(R.id.one_answer_question_view) TextView questionTextView;
+        @BindView(R.id.one_answer_image_view) ImageView imageView;
+        @BindView(R.id.radio_button_a) RadioButton radioButtonA;
+        @BindView(R.id.radio_button_b) RadioButton radioButtonB;
+        @BindView(R.id.radio_button_c) RadioButton radioButtonC;
+        @BindView(R.id.one_answer_hint_button) Button hintButton;
+
+        public OneAnswerViewHolder(View view) {
+            ButterKnife.bind(this, view);
+        }
+
+    }
+
     private View createMultiAnswersView(final MultiAnswersQuestion question) {
         View newView = LayoutInflater.from(this).inflate(R.layout.activity_multi_answers, null);
+        MultiAnswersViewHolder holder = new MultiAnswersViewHolder(newView);
 
-        TextView questionView = (TextView) newView.findViewById(R.id.multi_answers_question_view);
-        questionView.setText(question.getQuestion());
-
-        ImageView imageView = (ImageView) newView.findViewById(R.id.multi_answers_image_view);
-        imageView.setImageBitmap(question.getImage());
-
-        CheckBox checkBoxA = (CheckBox) newView.findViewById(R.id.checkbox_a);
-        checkBoxA.setText(question.getAnswerA());
-
-        CheckBox checkBoxB = (CheckBox) newView.findViewById(R.id.checkbox_b);
-        checkBoxB.setText(question.getAnswerB());
-
-        CheckBox checkBoxC = (CheckBox) newView.findViewById(R.id.checkbox_c);
-        checkBoxC.setText(question.getAnswerC());
-
-        CheckBox checkBoxD = (CheckBox) newView.findViewById(R.id.checkbox_d);
-        checkBoxD.setText(question.getAnswerD());
-
-        Button hintButton = (Button) newView.findViewById(R.id.multi_answers_hint_button);
-        hintButton.setOnClickListener(new View.OnClickListener() {
+        holder.questionTextView.setText(question.getQuestion());
+        holder.imageView.setImageBitmap(question.getImage());
+        holder.checkBoxA.setText(question.getAnswerA());
+        holder.checkBoxB.setText(question.getAnswerB());
+        holder.checkBoxC.setText(question.getAnswerC());
+        holder.checkBoxD.setText(question.getAnswerD());
+        holder.hintButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 createToast(question.getHint());
             }
         });
-
         return newView;
+    }
+
+    static class MultiAnswersViewHolder{
+        @BindView(R.id.multi_answers_question_view) TextView questionTextView;
+        @BindView(R.id.multi_answers_image_view) ImageView imageView;
+        @BindView(R.id.checkbox_a) CheckBox checkBoxA;
+        @BindView(R.id.checkbox_b) CheckBox checkBoxB;
+        @BindView(R.id.checkbox_c) CheckBox checkBoxC;
+        @BindView(R.id.checkbox_d) CheckBox checkBoxD;
+        @BindView(R.id.multi_answers_hint_button) Button hintButton;
+
+        public MultiAnswersViewHolder(View view){
+            ButterKnife.bind(this, view);
+        }
     }
 
     private void createToast(String displayString) {
