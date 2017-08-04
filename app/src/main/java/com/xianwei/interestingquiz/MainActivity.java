@@ -32,10 +32,13 @@ public class MainActivity extends AppCompatActivity {
     View questionThreeView = null;
     View questionFourView = null;
 
+    @BindView(R.id.radio_button_a) RadioButton radioButtonA;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
         setupUI();
     }
 
@@ -77,23 +80,23 @@ public class MainActivity extends AppCompatActivity {
         CheckBox questionFourCheckboxThree = (CheckBox) questionFourView.findViewById(R.id.checkbox_c);
         CheckBox questionFourCheckboxFour = (CheckBox) questionFourView.findViewById(R.id.checkbox_d);
 
-        if (questionOneAnswerRadio.isChecked() == true){
+        if (questionOneAnswerRadio.isChecked()){
             score += 25;
         }
-        if (questionTwoAnswerRadio.isChecked() == true) {
+        if (questionTwoAnswerRadio.isChecked()) {
             score += 25;
         }
-        if (questionThreeCheckboxOne.isChecked() == false &&
-            questionThreeCheckboxTwo.isChecked() == true &&
-            questionThreeCheckboxThree.isChecked() == true &&
-            questionThreeCheckboxFour.isChecked() == true) {
+        if (!questionThreeCheckboxOne.isChecked()&&
+            questionThreeCheckboxTwo.isChecked()&&
+            questionThreeCheckboxThree.isChecked()&&
+            questionThreeCheckboxFour.isChecked()) {
             score +=25;
         }
 
-        if (questionFourCheckboxOne.isChecked() == true &&
-            questionFourCheckboxTwo.isChecked() == false &&
-            questionFourCheckboxThree.isChecked() == true &&
-            questionFourCheckboxFour.isChecked() == false) {
+        if (questionFourCheckboxOne.isChecked()&&
+            !questionFourCheckboxTwo.isChecked()&&
+            questionFourCheckboxThree.isChecked()&&
+            !questionFourCheckboxFour.isChecked()) {
             score +=25;
         }
 
@@ -192,10 +195,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void createToast(String displayString) {
         Context context = getApplicationContext();
-        CharSequence text = displayString;
         int duration = Toast.LENGTH_SHORT;
 
-        Toast toast = Toast.makeText(context, text, duration);
+        Toast toast = Toast.makeText(context, displayString, duration);
         toast.show();
     }
 }
