@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:textSize="14sp"
         android:layout_marginStart="15dp"
-        tools:text="Question 1: Which descriptions are right about this picture?" />
+        tools:text="@string/question_statement" />
 
     <ImageView
         android:id="@+id/multi_answers_image_view"

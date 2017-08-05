@@ -12,8 +12,9 @@
         android:id="@+id/one_answer_question_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
         android:textSize="14sp"
-        tools:text="Question 1: Which country does this building come from?" />
+        tools:text="@string/question_statement" />
 
     <ImageView
         android:id="@+id/one_answer_image_view"

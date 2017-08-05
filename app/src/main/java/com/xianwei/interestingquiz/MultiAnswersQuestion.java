@@ -18,12 +18,12 @@ public class MultiAnswersQuestion {
     private String hint;
 
     public MultiAnswersQuestion(String question,
-                                             Bitmap image,
-                                             String answerA,
-                                             String answerB,
-                                             String answerC,
-                                             String answerD,
-                                             String hint) {
+                                Bitmap image,
+                                String answerA,
+                                String answerB,
+                                String answerC,
+                                String answerD,
+                                String hint) {
         this.question = question;
         this.image = image;
         this.answerA = answerA;
