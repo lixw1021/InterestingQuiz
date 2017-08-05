@@ -85,10 +85,7 @@ public class MainActivity extends AppCompatActivity {
         CheckBox questionFourCheckboxTwo = (CheckBox) questionFourView.findViewById(R.id.checkbox_b);
         CheckBox questionFourCheckboxThree = (CheckBox) questionFourView.findViewById(R.id.checkbox_c);
         CheckBox questionFourCheckboxFour = (CheckBox) questionFourView.findViewById(R.id.checkbox_d);
-
         EditText questionFiveEditText = (EditText) questionFiveView.findViewById(R.id.input_answer_edit_text);
-
-        int questionFiveAnswer = Integer.parseInt(questionFiveEditText.getText().toString());
 
         if (questionOneAnswerRadio.isChecked()) {
             score += 20;
@@ -109,12 +106,12 @@ public class MainActivity extends AppCompatActivity {
                 !questionFourCheckboxFour.isChecked()) {
             score += 20;
         }
-        if (questionFiveAnswer == 8) {
-            score += 20;
+        if (questionFiveEditText.getText().toString() == null || questionFiveEditText.getText().toString().length() == 0 ) {
             return "Your final score is :" + score + "/100";
-        } else {
-            return "Your final score is :" + score + "/100";
+        } else if (Integer.parseInt(questionFiveEditText.getText().toString()) ==8) {
+            score += 25;
         }
+        return "Your final score is :" + score + "/100";
     }
 
     private void createQuestions() {
