@@ -3,10 +3,8 @@ package com.xianwei.interestingquiz;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -52,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
         questionThreeView = createMultiAnswersView(firstMultiAnswersQuestion);
         questionFourView = createMultiAnswersView(secondMultiAnswersQuestion);
         questionFiveView = createInputAnswerView(firstInputAnswerQuestion);
+        EditText editText = (EditText) questionFiveView.findViewById(R.id.input_answer_edit_text);
+        editText.setInputType( TYPE_CLASS_NUMBER | TYPE_NUMBER_VARIATION_NORMAL);
 
 
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.questions_view);
@@ -87,8 +87,6 @@ public class MainActivity extends AppCompatActivity {
         CheckBox questionFourCheckboxFour = (CheckBox) questionFourView.findViewById(R.id.checkbox_d);
 
         EditText questionFiveEditText = (EditText) questionFiveView.findViewById(R.id.input_answer_edit_text);
-        questionFiveEditText.setBackgroundColor(Color.GREEN);
-//        questionFiveEditText.setInputType(InputType.TYPE_NUMBER_VARIATION_NORMAL|InputType.TYPE_CLASS_NUMBER);
 
         int questionFiveAnswer = Integer.parseInt(questionFiveEditText.getText().toString());
 
