@@ -49,10 +49,10 @@ public class MainActivity extends AppCompatActivity {
         questionTwoView = createOneAnswerView(secondOneAnswerQuestion);
         questionThreeView = createMultiAnswersView(firstMultiAnswersQuestion);
         questionFourView = createMultiAnswersView(secondMultiAnswersQuestion);
+
         questionFiveView = createInputAnswerView(firstInputAnswerQuestion);
         EditText editText = (EditText) questionFiveView.findViewById(R.id.input_answer_edit_text);
         editText.setInputType( TYPE_CLASS_NUMBER | TYPE_NUMBER_VARIATION_NORMAL);
-
 
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.questions_view);
         linearLayout.addView(questionOneView);
@@ -115,8 +115,6 @@ public class MainActivity extends AppCompatActivity {
         } else {
             return "Your final score is :" + score + "/100";
         }
-
-
     }
 
     private void createQuestions() {
